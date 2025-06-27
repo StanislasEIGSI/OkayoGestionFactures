@@ -1,26 +1,52 @@
-# Générateur de requêtes SQL - SIAP
+# Okayo API – Gestion de Factures avec FastAPI
 
-Ce projet contient trois pages HTML qui permettent de générer automatiquement des requêtes SQL à partir de fichiers Excel contenant des données de passage.
+Bienvenue dans l'API de gestion de factures de la société fictive **Okayo**, développée en **Python** avec le framework **FastAPI**.  
+Ce projet permet de gérer les **clients**, **produits**, **factures**, **lignes de facture**, et les informations de l’entreprise Okayo.
 
-## Objectif
+---
 
-- Générer des requêtes SQL selon trois procédures :
-  - Fusion de communes
-  - Scission de communes
-  - Changement de code INSEE
+##  Fonctionnalités
 
-## Structure
+-  Création, consultation, mise à jour et suppression de **clients**
+-  Gestion des **produits** avec historique des prix et taux de TVA
+-  Création de **factures** associées à des clients
+-  Ajout de **lignes de facture** avec quantité et prix
+-  Consultation d’une facture complète avec ses lignes
+-  Documentation interactive via Swagger UI
 
-- `src/` : contient les fichiers HTML principaux.
-- `data/` : contient les fichiers Excel d'exemple (non versionnés dans GitHub).
-- `test/` : résultats attendus pour vérification.
+---
 
-## Utilisation
+##  Structure du projet
+okayo_api/
+│
+├── app/
+│   ├── main.py            # Point d'entrée de l'application
+│   ├── database.py        # Connexion à la base de données
+│   ├── models.py          # Modèles SQLAlchemy
+│   ├── schemas.py         # Schémas Pydantic
+│   └── crud/              # (Optionnel) Fonctions métiers
+│
+├── venv/                  # Environnement virtuel
+└── README.md
 
-1. Ouvrir la page HTML correspondant à la procédure.
-2. Importer le fichier Excel.
-3. Copier les requêtes SQL générées.
+## Utilisation de l'API:
 
-## Dépendances
+1. Cloner le dépôt
 
-- [XLSX.js](https://github.com/SheetJS/sheetjs) pour la lecture des fichiers Excel côté navigateur.
+  git clone https://github.com/votre-utilisateur/okayo_api.git
+  cd okayo_api
+
+2. Créer un environnement virtuel
+
+  python -m venv venv
+  source venv/bin/activate  # ou venv\Scripts\activate sous Windows
+
+3. Installer les dépendances
+
+  pip install fastapi uvicorn sqlalchemy pydantic
+
+4. Lancer l'application
+
+  uvicorn main:app --reload
+  Accès à la documentation interactive : http://127.0.0.1:8000/docs
+
